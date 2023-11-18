@@ -15,7 +15,7 @@ def analyze_10k(symbol):
     html_content = response.text
 
     # Load content from the URL using HTMLTextLoader
-    loader = HTMLTextLoader(html_content)
+    loader = UnstructuredHTMLLoader(html_content)
     documents = loader.load()
 
     # Text splitting
