@@ -10,8 +10,16 @@ from langchain.chains import RetrievalQA
 def fetch_10k_data(symbol):
     # Fetch the latest 10-K filing URL using the Edgar API
     edgar_api_url = f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={symbol}&type=10-K&dateb=&owner=exclude&count=1"
-    edgar_api_response = requests.get(edgar_api_url)
-    edgar_api_data = edgar_api_response.json()
+    try:
+        edgar_api_response = requests.get(edgar_api_url)
+        edgar_api_response.raise_for_status()  # Raise an HTTPError for bad responses
+        edgar_api_data = edgar_api_response.json()
+    except requests.exceptions.RequestException as req_err:
+        print(f"Error during request to Edgar API: {req_err}")
+        return None
+    except ValueError as json_err:
+        print(f"Error decoding JSON from Edgar API response: {json_err}")
+        return None
 
     # Check if the response contains filing details
     if 'filings' in edgar_api_data and 'filings' in edgar_api_data['filings']:
@@ -19,11 +27,17 @@ def fetch_10k_data(symbol):
         filing_url = latest_filing['href']
 
         # Fetch the content of the latest 10-K filing
-        response = requests.get(filing_url)
-        return response.text
+        try:
+            response = requests.get(filing_url)
+            response.raise_for_status()  # Raise an HTTPError for bad responses
+            return response.text
+        except requests.exceptions.RequestException as req_err:
+            print(f"Error during request to fetch 10-K filing: {req_err}")
+            return None
     else:
+        print(f"No filing details found in the Edgar API response for symbol {symbol}.")
         return None
-
+        
 # Function to analyze 10-K
 def analyze_10k(html_content):
 
