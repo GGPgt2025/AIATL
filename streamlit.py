@@ -22,7 +22,7 @@ if stock_data:
     # if ten_k_text:
     #     analysis_result = analyze_10k(ten_k_text)
     #     display_results(analysis_result)
-    else:
-        st.warning("Failed to fetch 10-K data. Please check the symbol.")
+    # else:
+    #     st.warning("Failed to fetch 10-K data. Please check the symbol.")
 else:
     st.warning("Failed to fetch real-time stock data. Please check the symbol or try again later.")
