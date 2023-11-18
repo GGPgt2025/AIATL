@@ -7,7 +7,7 @@ st.title("Stock Pitch Deck Generator")
 # User input
 symbol = st.text_input("Enter Stock Symbol (e.g., AAPL):").upper()
 
-if st.button("Generate Analysis"):
+if st.button("Generate Stock Pitch"):
     if symbol:
         # st.subheader("Real-Time Stock Data:")
         st.write(f"Symbol: {symbol}")
@@ -30,5 +30,5 @@ if st.button("Generate Analysis"):
     #     display_results(analysis_result)
     # else:
     #     st.warning("Failed to fetch 10-K data. Please check the symbol.")
-else:
-    st.warning("Failed to fetch real-time stock data. Please check the symbol or try again later.")
+# else:
+#     st.warning("Failed to fetch real-time stock data. Please check the symbol or try again later.")
