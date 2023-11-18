@@ -14,6 +14,7 @@ def fetch_10k_data(symbol):
         edgar_api_response = requests.get(edgar_api_url)
         edgar_api_response.raise_for_status()  # Raise an HTTPError for bad responses
         edgar_soup = BeautifulSoup(edgar_api_response.text, 'html.parser')
+        table = edgar_soup.find_all("tr")
     except requests.exceptions.RequestException as req_err:
         print(f"Error during request to Edgar API: {req_err}")
         return None
