@@ -13,25 +13,20 @@ def fetch_10k_data(symbol):
     try:
         edgar_api_response = requests.get(edgar_api_url)
         edgar_api_response.raise_for_status()  # Raise an HTTPError for bad responses
-        edgar_api_data = edgar_api_response.json()
+        edgar_soup = BeautifulSoup(edgar_api_response.text, 'html.parser')
     except requests.exceptions.RequestException as req_err:
         print(f"Error during request to Edgar API: {req_err}")
         return None
-    except ValueError as json_err:
-        print(f"Error decoding JSON from Edgar API response: {json_err}")
-        return None
 
-    # Print the entire Edgar API response for inspection
-    print(edgar_api_data)
-
-    # Check if the response contains filing details
-    if 'filings' in edgar_api_data and 'filings' in edgar_api_data['filings']:
-        latest_filing = edgar_api_data['filings']['filings'][0]
-        filing_url = latest_filing['href']
-
-        # Fetch the content of the latest 10-K filing
+    # Extract the link to the latest 10-K filing document
+    document_link = edgar_soup.find('a', {'id': 'documentsbutton'})
+    
+    if document_link:
+        document_url = document_link.get('href')
+        
+        # Fetch the content of the latest 10-K filing document
         try:
-            response = requests.get(filing_url)
+            response = requests.get(document_url)
             response.raise_for_status()  # Raise an HTTPError for bad responses
             return response.text
         except requests.exceptions.RequestException as req_err:
