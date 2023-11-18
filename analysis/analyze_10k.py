@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 from langchain.document_loaders import UnstructuredHTMLLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
