@@ -1,4 +1,4 @@
-import app.streamlit as st
+import streamlit as st
 from analysis.analyze_10k import analyze_10k
 from analysis.analyze_yahoo import fetch_stock_data
 
@@ -8,7 +8,7 @@ st.title("Stock Pitch Deck Generator")
 symbol = st.text_input("Enter Stock Symbol (e.g., AAPL):").upper()
 
 # Fetch real-time stock data
-stock_data = fetch_stock_data(symbol)
+stock_data = fetch_stock_data()
 
 # if stock_data:
 #     st.subheader("Real-Time Stock Data:")
