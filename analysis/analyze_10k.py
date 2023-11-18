@@ -21,6 +21,9 @@ def fetch_10k_data(symbol):
         print(f"Error decoding JSON from Edgar API response: {json_err}")
         return None
 
+    # Print the entire Edgar API response for inspection
+    print(edgar_api_data)
+
     # Check if the response contains filing details
     if 'filings' in edgar_api_data and 'filings' in edgar_api_data['filings']:
         latest_filing = edgar_api_data['filings']['filings'][0]
