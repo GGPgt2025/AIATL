@@ -1,3 +1,5 @@
+import yfinance as yf
+
 # Function to fetch stock data from Yahoo Finance API
 def fetch_stock_data(symbol):
     # Replace 'YOUR_YAHOO_API_KEY' with your actual Yahoo Finance API key
