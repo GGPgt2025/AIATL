@@ -1,4 +1,4 @@
-import app.streamlit as st
+import streamlit as st
 from analysis.analyze_10k import analyze_10k
 from analysis.analyze_yahoo import fetch_stock_data
 
