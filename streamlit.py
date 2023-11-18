@@ -8,7 +8,7 @@ st.title("Stock Pitch Deck Generator")
 symbol = st.text_input("Enter Stock Symbol (e.g., AAPL):").upper()
 
 # Fetch real-time stock data
-stock_data = fetch_stock_data()
+stock_data = fetch_stock_data(symbol)
 
 # if stock_data:
 #     st.subheader("Real-Time Stock Data:")

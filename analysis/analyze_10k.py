@@ -7,7 +7,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 
 # Function to analyze 10-K
-def analyze_10k():
+def analyze_10k(symbol):
 
     # Fetch the content of the URL
     url = "https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019323000106/aapl-20230930.htm"
