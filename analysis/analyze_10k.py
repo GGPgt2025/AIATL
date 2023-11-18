@@ -1,5 +1,5 @@
 import requests
-from langchain.document_loaders import UnsctructuredHTMLLoader
+from langchain.document_loaders import UnstructuredHTMLLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
