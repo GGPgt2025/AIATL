@@ -4,3 +4,4 @@ requests
 yfinance
 unstructured
 beautifulsoup4==4.12.2
+yfinance==0.2.32
