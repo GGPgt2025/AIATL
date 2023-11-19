@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px
 from datetime import date, timedelta
 
-st.title("Sock Pitch Generator")
+st.title("Stock Pitch Generator")
 symbol = st.text_input("Enter a stock symbol: ")
 ticker = yf.Ticker(symbol)
 
