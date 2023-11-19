@@ -18,6 +18,7 @@ if selected_tab == "Recommendation":
 if selected_tab == "Company Background":
     st.header("Company Background")
     st.subheader("Past decade chart history:")
+    
     start_date = date.today() - timedelta(days=3650)
     end_date = date.today()
 
